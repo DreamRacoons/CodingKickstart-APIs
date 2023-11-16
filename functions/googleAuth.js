@@ -19,7 +19,7 @@ function googleProvider() {
   // [END auth_google_provider_params]
 }
 
-function googleSignInPopup(provider) {
+export function googleSignInPopup(provider) {
   // [START auth_google_signin_popup]
   firebase.auth()
     .signInWithPopup(provider)
@@ -46,7 +46,7 @@ function googleSignInPopup(provider) {
   // [END auth_google_signin_popup]
 }
 
-function googleSignInRedirectResult() {
+export function googleSignInRedirectResult() {
   // [START auth_google_signin_redirect_result]
   firebase.auth()
     .getRedirectResult()
@@ -76,7 +76,7 @@ function googleSignInRedirectResult() {
   // [END auth_google_signin_redirect_result]
 }
 
-function googleBuildAndSignIn(id_token) {
+export function googleBuildAndSignIn(id_token) {
   // [START auth_google_build_signin]
   // Build Firebase credential with the Google ID token.
   var credential = firebase.auth.GoogleAuthProvider.credential(id_token);
@@ -96,7 +96,7 @@ function googleBuildAndSignIn(id_token) {
 }
 
 // [START auth_google_callback]
-function onSignIn(googleUser) {
+export function onSignIn(googleUser) {
   console.log('Google Auth Response', googleUser);
   // We need to register an Observer on Firebase Auth to make sure auth is initialized.
   var unsubscribe = firebase.auth().onAuthStateChanged((firebaseUser) => {
@@ -128,7 +128,7 @@ function onSignIn(googleUser) {
 // [END auth_google_callback]
 
 // [START auth_google_checksameuser]
-function isUserEqual(googleUser, firebaseUser) {
+export function isUserEqual(googleUser, firebaseUser) {
   if (firebaseUser) {
     var providerData = firebaseUser.providerData;
     for (var i = 0; i < providerData.length; i++) {
@@ -143,7 +143,7 @@ function isUserEqual(googleUser, firebaseUser) {
 }
 // [END auth_google_checksameuser]
 
-function googleProviderCredential(idToken) {
+export function googleProviderCredential(idToken) {
   // [START auth_google_provider_credential]
   var credential = firebase.auth.GoogleAuthProvider.credential(idToken);
   // [END auth_google_provider_credential]
